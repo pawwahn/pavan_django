@@ -1,0 +1,6 @@
+
+to see the django version: django-admin --version
+
+to create a project: django-admin startproject <your_project_name>
+
+to run the server : django manage.py runserver
