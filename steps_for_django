@@ -3,4 +3,23 @@ to see the django version: django-admin --version
 
 to create a project: django-admin startproject <your_project_name>
 
-to run the server : django manage.py runserver
+to run the server : python manage.py runserver
+
+check the server is running or not in: http://127.0.0.1:8000/
+
+to create App:
+$inside ur proj>python manage.py startapp <your_app_name>
+
+tip:
+better to maintain seperaate url file for every app.
+> under "your_app">create a urls.py for every app that you create.
+
+every app will have some web pages. when an url is typed, it gives the response which can be webpage or html content
+so, every urls.py file should import views.py in it.
+
+so, what ever the urls you want to create for your app, those should be mentioned in the urls.py
+copy the same url line that are in <your_project> to <your_app/urls.py>
+
+
+
+
