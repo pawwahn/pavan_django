@@ -20,6 +20,12 @@ so, every urls.py file should import views.py in it.
 so, what ever the urls you want to create for your app, those should be mentioned in the urls.py
 copy the same url line that are in <your_project> to <your_app/urls.py>
 
+import 'from django.urls import path' and 'from . import views' in the urls.py that we created in <your_app_name>
+This path is helpful as we use r'^url_or_link$' to render specific view.
+
+** dont forget to include the urls.py in <your_app> to urls.py in <your_project> urls.py
+    to include that, we need to import "from django.urls import include" in <your_project> urls.py
+
 
 
 
