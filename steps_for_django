@@ -26,6 +26,43 @@ This path is helpful as we use r'^url_or_link$' to render specific view.
 ** dont forget to include the urls.py in <your_app> to urls.py in <your_project> urls.py
     to include that, we need to import "from django.urls import include" in <your_project> urls.py
 
+In <your_app>'s urls.py file, write the view name as mentioned below..
+     path('app_name',views.app_name,name='app_name')
+
+    This 'app_name' you mentioned in this 'music/urls.py' file should be defined in <your_app>'s views.py file as mentioned below..
+        def app_name(request):
+            return HttpResponse("<h1>This is Music App")
+
+to run the server : python manage.py runserver
+
+to do database migrations:
+    python manage.py migrate
+
+for creating a table(model),
+    go to models.py, create a class(which is a table)
+
+the models we created will be reflected to database only when we mention the details of the app model details in settings.py
+    for that, in settings.py, > INSTALLED_APPS> <'music.apps.MusicConfig'> where MusicConfig is from apps.py class
+
+to migrate the models, <$: python manage.py makemigrations music >
+    Migrations for 'music':
+    music\migrations\0001_initial.py
+        - Create model Album
+        - Create model Song
+
+to check whether the db is created or not,we can check with,
+    $>python manage.py sqlmigrate music 0001
+    remember: migration is nothing but updating the changes to db (whether creating the table, updating,deleting,etc..)
+
+    two steps to remember:
+        python manage.py makemigrations music
+        python manage.py migrate
+
+
+<-- working with db -->
+
+
+
 
 
 
