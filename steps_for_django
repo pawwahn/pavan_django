@@ -60,6 +60,64 @@ to check whether the db is created or not,we can check with,
 
 
 <-- working with db -->
+    python manage.py shell
+    from music.models import Album,Song
+    Album.objects.all()
+    <QuerySet []>
+
+     a = Album(artist="Artist1",album_title="AlbumTitle1",genre="Genre1",album_logo="None")
+    >>> a.save()
+    >>> a.artist
+        'Artist1'
+    >>> a.genre
+        'Genre1'
+
+    Another way of creating records in db is:
+         b = Album()
+        >>> b.artist = "Artist2"
+        >>> b.album_title = "AlbumTitle2"
+        >>> b.genre = "Genre2"
+        >>> b.album_logo="Logo2"
+        >>> b.save()
+
+    To see all the records created:
+        >>> Album.objects.all()
+        <QuerySet [<Album: Album object (1)>, <Album: Album object (2)>]>
+
+    To get the value of records clearly, we have to use
+        def __str__(self):
+            return self.artist + " " + self.genre
+            (The above line gives the result in string format)
+
+    now, restart the server and make the migrations by
+        $: python manage.py makemigrations
+        $: python manage.py migrate
+        $: python manage.py runserver
+
+    Now, go to shell,
+    from music.models import Album, Song
+    Album.objects.filter(id=1)
+        <QuerySet [<Album: Artist1 AlbumTitle1 Genre1 None>]>
+
+    To create a superuser/admin:
+        $: python manage.py createsuperuser
+        create user by giving user name, mail, password
+
+        restart the server and check the url
+        http://127.0.0.1:8000/admin/
+
+        login to the application
+        we can not see the tables of Album and songs. The reason is we have not registered the models in admin page in music app folder
+        To register, the class, go to admin.py in music folder and
+            from music.models import Album  # The Class name or model name
+            admin.site.register(Album)
+
+            refresh the page and see
+
+
+
+
+
 
 
 
