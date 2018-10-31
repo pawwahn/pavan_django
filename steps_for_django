@@ -115,6 +115,23 @@ to check whether the db is created or not,we can check with,
             refresh the page and see
 
 
+    To add data or object..(many2one)
+        importing the model..
+            album1 = Album.objects.get(pk=5)
+            here album1 is object..
+
+        1st way of creating in many2one table:
+            song = Song()
+            song.album = album1(foreign key)
+            song.file_type='mp3'
+            song.song_title='Title'
+            song.save()
+
+        2nd way of creating in many2one table:
+            <object>.<model_set>.create(attributes except foreign_key_data. Reason is we are creating the object for the object album1.)
+
+
+
 
 
 
