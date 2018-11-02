@@ -1,5 +1,38 @@
 {% if album %}
+
 <ul>
-    <li> <a href="/music/{{album.id}}/">{{album.album_title}}</a>
+    <li> <a href="/music/{{album.id}}/">{{album.album_title}}</a> </li>
+    <!--<li> <a href="{% url 'index' album.id %}">{{album.album_title}}</a></li>-->
 </ul>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 20%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<table>
+    <tr  style="width:100%">
+        <th>Songs of <b>{{album.artist}} </b></th>
+        <th>Format</th>
+    </tr>
+{% for a in alb%}
+    <tr>
+        <td>{{a.song_title}}</td>
+        <td>{{a.file_type}}</td>
+    </tr>
+{% endfor %}
+    </table>
 {% endif %}

@@ -49,7 +49,8 @@ def app_name(request):
 def detail(request, alb_id):
     try:
         album = Album.objects.get(pk=alb_id)
-        context = {'album':album}
+        alb = album.song_set.all()
+        context = {'album':album,'alb':alb}
     except Album.DoesNotExist:
         raise Http404("Album Does Not Exist")
     return render(request, 'music/detail.html', context)
