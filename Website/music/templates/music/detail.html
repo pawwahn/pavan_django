@@ -1,8 +1,8 @@
 {% if album %}
 
 <ul>
-    <li> <a href="/music/{{album.id}}/">{{album.album_title}}</a> </li>
-    <!--<li> <a href="{% url 'index' album.id %}">{{album.album_title}}</a></li>-->
+    <li> <a href="{% url 'music:detail' album.id %}">{{album.album_title}}</a></li>
+    <!-- <li> <a href="/music/{{album.id}}/">{{album.album_title}}</a> </li>-->
 </ul>
 
 <style>
@@ -23,6 +23,7 @@ tr:nth-child(even) {
 }
 </style>
 
+{% if alb %}
 <table>
     <tr  style="width:100%">
         <th>Songs of <b>{{album.artist}} </b></th>
@@ -35,4 +36,9 @@ tr:nth-child(even) {
     </tr>
 {% endfor %}
     </table>
+
+{% else %}
+<h3>We are sorry..! We haven't found any album of your favorite artist..</h3>
+{% endif %}
+
 {% endif %}

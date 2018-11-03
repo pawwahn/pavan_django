@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from .models import Album, Song
@@ -46,11 +46,20 @@ def app_name(request):
 # def detail(request, alb_id):
 #     return HttpResponse("<h1>The Details of album : " +str(alb_id) + " are below </h1>")
 
+# def detail(request, alb_id):
+#     try:
+#         album = Album.objects.get(pk=alb_id)
+#         #print(album)
+#         alb = album.song_set.all()
+#         context = {'album':album,'alb':alb}
+#     except Album.DoesNotExist:
+#         raise Http404("Album Does Not Exist")
+#     return render(request, 'music/detail.html', context)
+
+
 def detail(request, alb_id):
-    try:
-        album = Album.objects.get(pk=alb_id)
-        alb = album.song_set.all()
-        context = {'album':album,'alb':alb}
-    except Album.DoesNotExist:
-        raise Http404("Album Does Not Exist")
+    album = get_object_or_404(Album, pk=alb_id)
+    alb = album.song_set.all()
+    context = {'album':album,'alb':alb}
+
     return render(request, 'music/detail.html', context)
